@@ -1,5 +1,6 @@
 package xyz.rk0.housing.data.loader;
 
+import com.newrelic.api.agent.Trace;
 import org.springframework.stereotype.Component;
 import xyz.rk0.housing.data.model.HousingRecord;
 
@@ -15,6 +16,7 @@ public class HousingDataFilter {
      * checking that each one has been provided. This method is a little lazier than the most efficient way of doing it but boy howdy is it short.
      * Could be optimized by factoring out the null checks. They don't need to happen for every record.
      **/
+    @Trace
     public List<HousingRecord> filterData(List<HousingRecord> allRecords, String zipCode, LocalDate startDate, LocalDate endDate) {
         return allRecords.stream()
             .filter(record -> zipCode == null || record.getZipCode().equals(zipCode))

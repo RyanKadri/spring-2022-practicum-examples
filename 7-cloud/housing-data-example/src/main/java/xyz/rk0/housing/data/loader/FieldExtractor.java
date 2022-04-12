@@ -1,5 +1,6 @@
 package xyz.rk0.housing.data.loader;
 
+import com.newrelic.api.agent.Trace;
 import org.springframework.stereotype.Component;
 import xyz.rk0.housing.data.model.HousingRecord;
 
@@ -13,6 +14,7 @@ public class FieldExtractor {
      * have conditions like "if min and square footage..."
      * This little tiny bit of logic being its own class might be overkill. But it makes the stats tests cleaner (maybe overly so) */
 
+    @Trace
     public List<Double> extractValues(List<HousingRecord> filteredData, String field) {
         List<Double> values = new ArrayList<>();
         for(HousingRecord record : filteredData) {

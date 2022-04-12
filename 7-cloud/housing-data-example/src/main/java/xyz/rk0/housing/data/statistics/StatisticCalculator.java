@@ -1,5 +1,6 @@
 package xyz.rk0.housing.data.statistics;
 
+import com.newrelic.api.agent.Trace;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.List;
 @Component
 public class StatisticCalculator {
 
+    @Trace
     public double calculateStatistic(List<Double> values, String statistic) {
 
         switch(statistic) {

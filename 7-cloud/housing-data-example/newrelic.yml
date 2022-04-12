@@ -1,0 +1,3 @@
+common:
+  license_key: abc123
+  app_name: housing-api

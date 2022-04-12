@@ -1,5 +1,6 @@
 package xyz.rk0.housing.data.loader;
 
+import com.newrelic.api.agent.Trace;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,7 @@ public class DataLoader {
         this.filePath = filePath;
     }
 
+    @Trace
     public List<HousingRecord> readCsv() throws IOException {
         if(this.housingData != null) {
             // This strategy of reading the file on the first request is a little goofy since the first user has a bad experience.
